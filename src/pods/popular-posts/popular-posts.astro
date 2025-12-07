@@ -14,9 +14,9 @@ const popularContent = {
   aria-labelledby="popular-posts-aside-heading"
 >
   <div class="relative z-10 flex flex-col gap-6">
-    <h2 class="font-geist font-bold" id="popular-posts-aside-heading">{popularContent.heading}</h2>
+    <h2 class="font-geist font-bold text-center" id="popular-posts-aside-heading">{popularContent.heading}</h2>
 
-    <ul class="flex flex-col gap-4" aria-label="Lista de posts populares">
+    <ul class="flex flex-col gap-4 text-center" aria-label="Lista de posts populares">
       {
         popularContent.posts.map((post: any) => (
           <li>
