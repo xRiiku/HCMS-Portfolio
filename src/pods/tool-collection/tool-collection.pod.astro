@@ -1,0 +1,41 @@
+---
+import type { ToolSectionContent } from './tool-collection.model';
+
+const toolCollectionContent: ToolSectionContent = {
+  heading: 'Tecnologías',
+  description: 'Estas son algunas de las tecnologías y herramientas que utilizo como desarrollador web.',
+  tools: [
+    { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg' },
+    { name: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain-wordmark.svg' },
+    { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain-wordmark.svg' },
+    { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg' },
+    { name: 'SQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg' },
+    { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain-wordmark.svg' },
+    { name: 'Astro', logo: 'https://logowik.com/content/uploads/images/astro-framework8396.logowik.com.webp' },
+    { name: 'Angular', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg' },
+    { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg' },
+    { name: 'Tailwind CSS', logo: 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg' },
+    { name: 'Visual Studio Code', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg' },
+
+  ],
+};
+---
+
+<section
+  class="bg-secondary-50 dark:bg-secondary-100 flex flex-col items-center gap-4 rounded-2xl p-6 text-center md:items-start md:text-start"
+  aria-labelledby="tech-aside-heading"
+>
+  <h2 class="font-geist font-bold" id="tech-aside-heading">{toolCollectionContent.heading}</h2>
+  <p class="text-sm">{toolCollectionContent.description}</p>
+
+  <ul class="flex flex-wrap justify-center gap-4" aria-labelledby="tech-aside-heading">
+    {
+      toolCollectionContent.tools.map(tool => (
+        <li class="flex h-14 w-14 items-center justify-center rounded-lg bg-white dark:bg-neutral-100">
+          <img src={tool.logo} alt={tool.name} title={tool.name} class="h-8 w-8 object-contain" />
+        </li>
+      ))
+    }
+  </ul>
+</section>
