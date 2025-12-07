@@ -9,16 +9,16 @@ import PostCollectionPod from '#pods/post-collection/post-collection.pod.astro';
 
 const homeContent = {
   hero: {
-    title: "John's Web Dev Blog",
-    description: 'Here you can find various articles on web application development.',
+    title: "DrDev Blog",
+    description: 'Aquí podrás encontrar artículos sobre desarrollo web, programación y tecnología.',
   },
   postCollectionMini: {
-    heading: 'Popular posts',
+    heading: 'Posts populares',
   },
 };
 ---
 
-<Layout title="John's Web Dev Blog">
+<Layout title="DrDev Blog">
   <Hero ariaLabelledby="hero-title" slot="hero">
     <div class="flex flex-col gap-2 text-center">
       <h1 class="text-primary-700 text-5xl font-bold" id="hero-title">{homeContent.hero.title}</h1>
