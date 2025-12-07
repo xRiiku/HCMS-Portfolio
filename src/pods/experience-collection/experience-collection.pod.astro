@@ -19,7 +19,18 @@ const experienceContent = await getExperience();
               {exp.company} - {exp.role}
             </h3>
             <span class="text-tbase-500/90 mb-2 block text-sm font-semibold">{exp.period}</span>
-            <p>{exp.description}</p>
+            {exp.description.includes('•') ? (
+  <ul class="list-disc pl-6">
+    {exp.description
+      .split('•')
+      .filter(item => item.trim() !== '')
+      .map(item => (
+        <li>{item.trim()}</li>
+              ))}
+          </ul>
+        ) : (
+          <p>{exp.description}</p>
+        )}
           </article>
         </div>
       ))
