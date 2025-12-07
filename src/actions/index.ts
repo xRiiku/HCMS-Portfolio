@@ -29,8 +29,8 @@ export const server = {
         await resend.emails.send({
           from: FROM_EMAIL,
           to: TO_EMAIL,
-          subject: 'Hello World',
-          html: `<p>Congrats on sending your <strong>${email}</strong>!</p>`,
+          subject: 'Nuevo suscriptor al newsletter',
+          html: `<p><strong>${email}</strong> se ha suscrito a nuestra newsletter!</p>`,
         });
         return { success: true, message: 'E-mail sent successfully ✅' };
       } catch (error) {
