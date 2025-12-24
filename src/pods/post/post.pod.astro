@@ -9,16 +9,14 @@ interface Props {
 
 const { postEntry } = Astro.props;
 
-const likeCount = 6;
 
 const postContent = {
-  backButton: 'Go back',
-  published: 'Published',
-  minRead: 'min read',
+  backButton: 'Volver',
+  published: 'Publicado el',
 };
 ---
 
 <section class="flex shrink grow flex-col gap-12 px-6 py-4">
   <Header gobackText={postContent.backButton} publishedText={postContent.published} date={postEntry.date} />
-  <Body entry={postEntry} likeCount={likeCount} minReadText={postContent.minRead} />
+  <Body entry={postEntry} />
 </section>

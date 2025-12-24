@@ -1,12 +1,10 @@
 ---
-import HeartIcon from '#assets/icons/heart.svg';
 import type { Post } from '../post-collection.model';
 
 interface Props {
   post: Post;
 }
 const { post } = Astro.props;
-const readTimeLabel = 'min read';
 ---
 
 <a
@@ -47,11 +45,6 @@ const readTimeLabel = 'min read';
       </div>
 
       <div class="flex items-center gap-4">
-        <span class="text-xs">{post.readTime} {readTimeLabel}</span>
-        <div class="flex items-center gap-1">
-          <HeartIcon class="h-5 w-5" />
-          <span class="text-xs">{6}</span>
-        </div>
       </div>
     </div>
   </article>
