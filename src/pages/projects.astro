@@ -1,1 +1,48 @@
-<h1>Proyectos!</h1> <a href="/" class="font-geist hover:text-primary-500 font-semibold transition-colors"> Inicio </a>
+---
+import Layout from '#layouts/layout.astro';
+import ContactButtons from '#components/contact-buttons.astro';
+import MiniBioPod from '#pods/mini-bio/mini-bio.pod.astro';
+import ToolCollectionPod from '#pods/tool-collection/tool-collection.pod.astro';
+import Hero from '#components/hero.astro';
+import ProjectsPod from '#pods/projects/projects.pod.astro';
+
+const contactContent = {
+  heading: 'Contacto',
+  description:
+    '¿Tienes un proyecto en mente o necesitas un desarrollador capaz de llevar tus ideas a la realidad? Estaré encantado de escucharte. Puedes contactarme para colaboraciones, propuestas laborales o cualquier consulta relacionada con desarrollo web.',
+};
+const homeContent = {
+  hero: {
+    title: "Proyectos en los que he participado",
+    description: 'Aquí podrás encontrar una selección de proyectos en los que he trabajado',
+  },
+};
+---
+
+<Layout title="DrDev Portfolio">
+  <Hero ariaLabelledby="hero-title" slot="hero">
+    <div class="flex flex-col gap-2 text-center">
+      <h1 class="text-primary-700 text-5xl font-bold" id="hero-title">{homeContent.hero.title}</h1>
+      <p class="m-auto max-w-[30ch] text-lg leading-[1.2] tracking-normal">
+        {homeContent.hero.description}
+      </p>
+    </div>
+  </Hero>
+
+  <ProjectsPod />
+
+  <Fragment slot="aside">
+    <MiniBioPod type="card" />
+    <ToolCollectionPod />
+
+    <!-- Contact -->
+    <section
+      aria-labelledby="contact-aside-heading"
+      class="bg-primary-50 dark:bg-primary-100 flex flex-col items-center gap-4 rounded-2xl p-6 text-center"
+    >
+      <h2 class="font-geist font-bold" id="contact-aside-heading">{contactContent.heading}</h2>
+      <p class="text-sm">{contactContent.description}</p>
+      <ContactButtons />
+    </section>
+  </Fragment>
+</Layout>
