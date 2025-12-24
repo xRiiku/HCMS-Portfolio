@@ -5,23 +5,19 @@ interface PostInfo {
 
 export const popularPosts: PostInfo[] = [
   {
-    title: 'Astro Image component - Complete guide',
-    slug: 'astro-image',
+    title: 'Desarrollo web: Más Allá del Código',
+    slug: 'Desarrollo web: Más Allá del Código',
   },
   {
-    title: 'React Alicante Workshop 2024: Summary and Highlights',
-    slug: 'react-alicante-24',
+    title: 'Tecnología: Herramienta, no objetivo',
+    slug: 'Tecnología: Herramienta, no objetivo',
   },
   {
-    title: 'Create a server action in Astro to handle forms',
-    slug: 'server-action-form',
+    title: 'Frontend moderno: donde el diseño se encuentra con la ingeniería',
+    slug: 'Frontend moderno: donde el diseño se encuentra con la ingeniería',
   },
   {
-    title: 'Complete Guide to Vue.js 3 and the Composition API',
-    slug: 'vue-three-complete-guide',
-  },
-  {
-    title: 'Modern CSS Techniques for 2025 and Beyond',
-    slug: 'css-techniques-2025',
+    title: 'Desarrollo Web con Angular: arquitectura, escalabilidad y control',
+    slug: 'Desarrollo Web con Angular: arquitectura, escalabilidad y control',
   },
 ];
