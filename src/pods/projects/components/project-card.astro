@@ -1,0 +1,62 @@
+---
+import type { ProjectItem } from "../projects.model";
+
+interface Props {
+  project: ProjectItem;
+}
+
+const { project } = Astro.props;
+
+// Normalizamos nombres para que sea igual de cómodo que en posts
+const title = project.title ?? "Proyecto";
+const slug = project.slug ?? "";
+const href = project.link ?? "#";
+
+// Media defensivo (igual que antes, pero aislado aquí)
+const media = project.image as any;
+const imgUrl =
+  media?.url ??
+  media?.src ??
+  media?.formats?.large?.url ??
+  media?.formats?.medium?.url ??
+  "";
+
+const imgAlt = media?.alt ?? title;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group @container cursor-pointer rounded-4xl transition-shadow duration-300 hover:shadow-lg"
+  aria-label={`Abrir proyecto: ${title}`}
+>
+  <article class="flex h-full flex-col @lg:flex-row">
+    <div class="aspect-[16/9] overflow-hidden rounded-4xl bg-gray-300 @lg:flex-1">
+      {imgUrl ? (
+        <img
+          src={imgUrl}
+          alt={imgAlt}
+          class="h-full w-full rounded-4xl object-center transition-transform duration-300 group-hover:scale-[1.06]"
+          loading="lazy"
+        />
+      ) : (
+        <div class="flex h-full w-full items-center justify-center text-tbase-500/70">
+          Sin imagen
+        </div>
+      )}
+    </div>
+
+    <div class="flex flex-1 flex-col justify-between gap-6 p-4 @lg:flex-2">
+      <div class="flex flex-col gap-1">
+        
+        <div class="flex flex-col gap-2">
+          <h3 class="text-tbase-500/90 text-xl text-center font-bold transition-colors duration-300 group-hover:text-primary-700">
+            {title}
+          </h3>
+        </div>
+        {slug ? <p class="text-xs text-center">{slug}</p> : <span class="h-[16px] text-center" />}
+      </div>
+    </div>
+  </article>
+</a>

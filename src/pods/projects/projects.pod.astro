@@ -1,84 +1,12 @@
 ---
 import { getProjects } from "./projects.api";
-import type { ProjectItem } from "./projects.model";
+import ProjectCard from "./components/project-card.astro";
 
-const projects: ProjectItem[] = await getProjects();
+const projects = await getProjects();
 ---
 
-<section
-  class="flex flex-1 flex-col gap-8 px-6"
-  aria-labelledby="projects-section-heading"
->
-  <h2
-    class="text-tbase-500/90 text-3xl font-bold"
-    id="projects-section-heading"
-  >
-    Proyectos
-  </h2>
-
-  {projects.length === 0 ? (
-    <p class="text-tbase-500/80">
-      No hay proyectos todavía.
-    </p>
-  ) : (
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project: ProjectItem) => {
-        const title = project.title ?? "Proyecto";
-        const href = project.link ?? "#";
-
-        // Media de Content Island (defensivo)
-        const media = project.image as any;
-        const imgUrl =
-          media?.url ??
-          media?.src ??
-          media?.formats?.large?.url ??
-          media?.formats?.medium?.url ??
-          "";
-
-        const imgAlt = media?.alt ?? title;
-
-        return (
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-sm transition hover:-translate-y-1 hover:bg-white/10"
-            aria-label={`Abrir proyecto: ${title}`}
-          >
-            <div class="aspect-16/10 w-full overflow-hidden bg-black/10">
-              {imgUrl ? (
-                <img
-                  src={imgUrl}
-                  alt={imgAlt}
-                  class="h-full w-full object-cover transition group-hover:scale-105"
-                  loading="lazy"
-                />
-              ) : (
-                <div class="flex h-full w-full items-center justify-center text-tbase-500/70">
-                  Sin imagen
-                </div>
-              )}
-            </div>
-
-            <div class="flex flex-col gap-2 p-4">
-              <h3 class="text-lg font-bold text-primary-700">
-                {title}
-              </h3>
-
-              {project.slug && (
-                <p class="text-sm text-tbase-500/80">
-                  {project.slug}
-                </p>
-              )}
-
-              <span class="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-primary-700">
-                Ver proyecto
-                <span class="transition group-hover:translate-x-1">→</span>
-              </span>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-  )}
+<section class="flex flex-1 flex-col gap-9">
+  <div class="grid max-w-[895px] gap-8 xl:grid-cols-2">
+    {projects.map(project => <ProjectCard project={project} />)}
+  </div>
 </section>
