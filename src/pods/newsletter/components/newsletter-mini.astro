@@ -1,6 +1,7 @@
 ---
 import ArrowRightIcon from '#assets/icons/arrow-right.svg';
 import type { NewsletterContent } from '../newsletter.model';
+import { actions } from 'astro:actions';
 
 interface Props {
   content: NewsletterContent;
@@ -16,7 +17,12 @@ const { content } = Astro.props;
   <h2 class="font-geist font-bold" id="newsletter-aside-heading">{content.title}</h2>
   <p class="text-sm">{content.description}</p>
 
-  <form class="border-text relative flex items-center justify-between gap-2 rounded-xl border py-2 pr-2 pl-4">
+  <form
+    data-newsletter
+    method="POST"
+    action={actions.sendSubscription}
+    class="border-text relative flex items-center justify-between gap-2 rounded-xl border py-2 pr-2 pl-4"
+  >
     <label for="newsletter-email" class="sr-only">{content.inputLabel}</label>
     <input
       name="email"
@@ -24,6 +30,7 @@ const { content } = Astro.props;
       id="newsletter-email"
       placeholder={content.inputPlaceholder}
       class="bg-transparent outline-none"
+      required
     />
     <button
       type="submit"
